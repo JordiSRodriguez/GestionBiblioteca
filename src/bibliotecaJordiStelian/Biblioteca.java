@@ -142,6 +142,41 @@ public class Biblioteca {
                         }
                     } while (!libros.contains(isbn));
                 }
+                case 7 -> {
+                    System.out.println("Introduce el ISSN de la revista");
+                    int issn = sc.nextInt();
+                    System.out.println("Introduce el título de la revista");
+                    String titulo = sc.nextLine();
+                    System.out.println("Introduce el numero de autoras/es de la revista");
+                    int numAutorias = sc.nextInt();
+                    Revista revista = new Revista(issn, titulo);
+                    for (int i = 1; i <= numAutorias; i++) {
+                        System.out.println("Introduce el ID del autor/a " + i);
+                        int id = sc.nextInt();
+                        for (Autoria autoria : autorias) {
+                            if (autoria.getId() == id) {
+                                revista.setAutoria(autoria);
+                            }
+                        }
+                    }
+                    setRevista(revista);
+                }
+                case 8 -> getRevistas();
+                case 9 -> {
+                    int issn;
+                    do {
+                        System.out.println("Introduce el ISSN de la revista");
+                        issn = sc.nextInt();
+                        for (Revista revista : revistas) {
+                            if (revista.getIssn().equals(issn)) {
+                                revista.prestar();
+                                System.out.println("Revista prestada");
+                            } else {
+                                System.out.println("La revista no existe");
+                            }
+                        }
+                    } while (!revistas.contains(issn));
+                }
             }
         } while (opcion != 0);
 

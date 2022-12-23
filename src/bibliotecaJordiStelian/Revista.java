@@ -6,11 +6,10 @@ public class Revista {
     private String[] autoria;
     private int prestados;
 
-    public Revista(String issn, String titulo, String[] autoria, int prestados) {
+    public Revista(String issn, String titulo, String[] autoria) {
         this.issn = issn;
         this.titulo = titulo;
         this.autoria = autoria;
-        this.prestados = prestados;
     }
     public String getIssn() {
         return issn;
