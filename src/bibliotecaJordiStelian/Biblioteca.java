@@ -51,7 +51,7 @@ public class Biblioteca {
                 "\nRevistas=" + revistas;
     }
 
-    public static String menu() {
+    public static void menu() {
         String menu = "1. Crear Autor/a\n" +
                 "2. Ver autoras/es\n" +
                 "3. Crear Libro\n" +
@@ -63,7 +63,7 @@ public class Biblioteca {
                 "9. Prestar revista\n" +
                 "10. Devolver revista\n" +
                 "0. Salir";
-        return menu;
+        System.out.println(menu);
     }
 
     public static void main(String[] args) {
@@ -72,6 +72,7 @@ public class Biblioteca {
         int opcion = 0;
         do {
             menu();
+            opcion = sc.nextInt();
             switch (opcion) {
                 case 1 -> {
                     System.out.println("Introduce el ID del autor/a");
