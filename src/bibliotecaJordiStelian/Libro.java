@@ -7,9 +7,13 @@ public class Libro {
     private int ejemplares;
     private int prestados;
 
-    public Libro(String isbn, String titulo, String[] autoria) {
+    public Libro(){
+
+    }
+    public Libro(String isbn, String titulo, int ejemplares) {
         this.isbn = isbn;
         this.titulo = titulo;
+        this.ejemplares = ejemplares;
         this.autoria = autoria;
     }
 
@@ -52,6 +56,18 @@ public class Libro {
     public void setPrestados(int prestados) {
         this.prestados = prestados;
     }
+
+
+    public void anadirAutor(Autoria autoria){
+       for (int i = 0; i < this.autoria.length; i++) {
+           if(this.autoria[i] == null){
+               this.autoria[i] = autoria;
+               break;
+           }
+       }
+
+    }
+
 
     public String toString(){
         return "Libro:" +

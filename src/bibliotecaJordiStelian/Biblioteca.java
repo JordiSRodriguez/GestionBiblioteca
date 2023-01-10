@@ -86,7 +86,7 @@ public class Biblioteca {
                 case 2 -> getAutorias();
                 case 3 -> {
                     System.out.println("Introduce el ISBN del libro");
-                    int isbn = sc.nextInt();
+                    String isbn = sc.nextLine();
                     System.out.println("Introduce el título del libro");
                     String titulo = sc.nextLine();
                     System.out.println("Introduce el numero de ejemplares del libro");
