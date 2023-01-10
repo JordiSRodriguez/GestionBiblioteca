@@ -68,15 +68,16 @@ public class Biblioteca {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
         Biblioteca biblioteca = new Biblioteca();
         int opcion = 0;
         do {
             menu();
-            opcion = sc.nextInt();
+            opcion = sc2.nextInt();
             switch (opcion) {
                 case 1 -> {
                     System.out.println("Introduce el ID del autor/a");
-                    int id = sc.nextInt();
+                    int id = sc2.nextInt();
                     System.out.println("Introduce el nombre del autor/a");
                     String nombre = sc.nextLine();
                     System.out.println("Introduce los apellidos del autor/a");
@@ -91,13 +92,13 @@ public class Biblioteca {
                     System.out.println("Introduce el título del libro");
                     String titulo = sc.nextLine();
                     System.out.println("Introduce el numero de ejemplares del libro");
-                    int numEjemplares = sc.nextInt();
+                    int numEjemplares = sc2.nextInt();
                     System.out.println("Introduce el numero de autoras/es del libro");
-                    int numAutorias = sc.nextInt();
+                    int numAutorias = sc2.nextInt();
                     Libro libro = new Libro(isbn, titulo, numEjemplares);
                     for (int i = 1; i <= numAutorias; i++) {
                         System.out.println("Introduce el ID del autor/a " + i);
-                        int id = sc.nextInt();
+                        int id = sc2.nextInt();
                         for (Autoria autoria : autorias) {
                             if (autoria.getId() == id) {
                                 libro.anadirAutor(autoria);
@@ -113,7 +114,7 @@ public class Biblioteca {
                     int isbn;
                     do {
                         System.out.println("Introduce el ISBN del libro");
-                        isbn = sc.nextInt();
+                        isbn = sc2.nextInt();
                         for (Libro libro : libros) {
                             if (libro.getIsbn().equals(isbn)) {
                                 if (libro.getEjemplares() > 0) {
@@ -130,7 +131,7 @@ public class Biblioteca {
                     int isbn;
                     do {
                         System.out.println("Introduce el ISBN del libro");
-                        isbn = sc.nextInt();
+                        isbn = sc2.nextInt();
                         for (Libro libro : libros) {
                             if (libro.getIsbn().equals(isbn)) {
                                 if (libro.getPrestados() == 0) {
@@ -149,13 +150,13 @@ public class Biblioteca {
                     System.out.println("Introduce el título de la revista");
                     String titulo = sc.nextLine();
                     System.out.println("Introduce el numero de prestamos de la revista");
-                    int numPrestamos = sc.nextInt();
+                    int numPrestamos = sc2.nextInt();
                     System.out.println("Introduce el numero de autoras/es de la revista");
-                    int numAutorias = sc.nextInt();
+                    int numAutorias = sc2.nextInt();
                     Revista revista = new Revista(issn, titulo, numPrestamos);
                     for (int i = 1; i <= numAutorias; i++) {
                         System.out.println("Introduce el ID del autor/a " + i);
-                        int id = sc.nextInt();
+                        int id = sc2.nextInt();
                         for (Autoria autoria : autorias) {
                             if (autoria.getId() == id) {
                                 revista.anadirAutor(autoria);
@@ -169,7 +170,7 @@ public class Biblioteca {
                     int issn;
                     do {
                         System.out.println("Introduce el ISSN de la revista");
-                        issn = sc.nextInt();
+                        issn = sc2.nextInt();
                         for (Revista revista : revistas) {
                             if (revista.getIssn().equals(issn)) {
                                 revista.prestar();

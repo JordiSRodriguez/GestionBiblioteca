@@ -36,7 +36,7 @@ public class Autoria {
     }
 
     public String toString(){
-        return "Autoria:" +
+        return "Autor/a:" +
                 "\nID=" + id +
                 "\nNombre=" + nombre +
                 "\nApellidos=" + apellidos;
