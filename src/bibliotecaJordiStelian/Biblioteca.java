@@ -99,7 +99,7 @@ public class Biblioteca {
                         int id = sc.nextInt();
                         for (Autoria autoria : autorias) {
                             if (autoria.getId() == id) {
-                                libro.setAutoria(autoria);
+                                libro.anadirAutor(autoria);
                             }
                         }
                     }
@@ -144,18 +144,20 @@ public class Biblioteca {
                 }
                 case 7 -> {
                     System.out.println("Introduce el ISSN de la revista");
-                    int issn = sc.nextInt();
+                    String issn = sc.nextLine();
                     System.out.println("Introduce el título de la revista");
                     String titulo = sc.nextLine();
+                    System.out.println("Introduce el numero de prestamos de la revista");
+                    int numPrestamos = sc.nextInt();
                     System.out.println("Introduce el numero de autoras/es de la revista");
                     int numAutorias = sc.nextInt();
-                    Revista revista = new Revista(issn, titulo);
+                    Revista revista = new Revista(issn, titulo, numPrestamos);
                     for (int i = 1; i <= numAutorias; i++) {
                         System.out.println("Introduce el ID del autor/a " + i);
                         int id = sc.nextInt();
                         for (Autoria autoria : autorias) {
                             if (autoria.getId() == id) {
-                                revista.setAutoria(autoria);
+                                revista.anadirAutor(autoria);
                             }
                         }
                     }

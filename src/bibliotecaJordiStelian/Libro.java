@@ -61,7 +61,7 @@ public class Libro {
     public void anadirAutor(Autoria autoria){
        for (int i = 0; i < this.autoria.length; i++) {
            if(this.autoria[i] == null){
-               this.autoria[i] = autoria;
+               this.autoria[i] = String.valueOf(autoria);
                break;
            }
        }
