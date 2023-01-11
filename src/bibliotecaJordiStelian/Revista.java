@@ -8,10 +8,9 @@ public class Revista {
     private String[] autoria;
     private int prestados;
 
-    public Revista(String issn, String titulo, int prestados, int autores) {
+    public Revista(String issn, String titulo, int autores) {
         this.issn = issn;
         this.titulo = titulo;
-        this.prestados = prestados;
         this.autoria = new String[autores];
     }
     public String getIssn() {
@@ -75,7 +74,9 @@ public class Revista {
     }
 
     public int devolver(){
-        prestados--;
+        if (prestados > 0){
+            prestados--;
+        }
         return prestados;
     }
 }

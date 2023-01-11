@@ -148,11 +148,9 @@ public class Biblioteca {
                     String issn = sc.nextLine();
                     System.out.println("Introduce el título de la revista");
                     String titulo = sc.nextLine();
-                    System.out.println("Introduce el numero de prestamos de la revista");
-                    int numPrestamos = sc2.nextInt();
                     System.out.println("Introduce el numero de autoras/es de la revista");
                     int numAutorias = sc2.nextInt();
-                    Revista revista = new Revista(issn, titulo, numPrestamos, numAutorias);
+                    Revista revista = new Revista(issn, titulo, numAutorias);
                     for (int i = 1; i <= numAutorias; i++) {
                         System.out.println("Introduce el ID del autor/a " + i);
                         int id = sc2.nextInt();
@@ -166,19 +164,28 @@ public class Biblioteca {
                 }
                 case 8 -> getRevistas();
                 case 9 -> {
-                    int issn;
-                    do {
-                        System.out.println("Introduce el ISSN de la revista");
-                        issn = sc2.nextInt();
-                        for (Revista revista : revistas) {
-                            if (revista.getIssn().equals(issn)) {
+                    System.out.println("Introduce el ISSN de la revista");
+                    String issn = sc.nextLine();
+                    for (Revista revista : revistas) {
+                        if (revista.getIssn().equals(issn)) {
                                 revista.prestar();
-                                System.out.println("Revista prestada");
+                                System.out.println("La revista " + revista.getTitulo() + " ha sido prestada");
+                        }
+                    }
+                }
+                case 10 -> {
+                    System.out.println("Introduce el ISSN de la revista");
+                    String issn = sc.nextLine();
+                    for (Revista revista : revistas) {
+                        if (revista.getIssn().equals(issn)) {
+                            if (revista.getPrestados() > 0) {
+                                revista.devolver();
+                                System.out.println("La revista " + revista.getTitulo() + " ha sido devuelta");
                             } else {
-                                System.out.println("La revista no existe");
+                                System.out.println("No quedan revistas prestadas");
                             }
                         }
-                    } while (!revistas.contains(issn));
+                    }
                 }
             }
         } while (opcion != 0);
