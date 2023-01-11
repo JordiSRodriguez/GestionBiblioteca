@@ -35,6 +35,10 @@ public class Autoria {
         this.apellidos = apellidos;
     }
 
+    /**
+     * Devuelve el Id, nombre y apellidos del autor
+     * @return
+     */
     public String toString(){
         return "Autor/a:" +
                 "\nID=" + id +

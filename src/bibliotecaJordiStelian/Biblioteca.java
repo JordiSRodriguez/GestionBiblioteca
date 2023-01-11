@@ -17,7 +17,7 @@ public class Biblioteca {
     }
 
     /**
-     * Recibe el return del toString de la clase Libro y lo imprime por pantalla
+     * Recibe el return del toString de la clase Autoria y lo imprime por pantalla
      */
     public static void getAutorias() {
         for (Autoria autoria : autorias) {
@@ -28,7 +28,9 @@ public class Biblioteca {
     public static void setAutoria(Autoria autoria) {
         autorias.add(autoria);
     }
-
+    /**
+     * Recibe el return del toString de la clase Libro y lo imprime por pantalla
+     */
     public static void getLibros() {
         for (Libro libro : libros) {
             System.out.println(libro);
