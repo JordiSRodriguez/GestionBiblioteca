@@ -84,18 +84,22 @@ public class Libro {
                 "\nPrestados=" + prestados;
         return aux;
     }
+
     public int prestar(){
-        if (ejemplares > prestados){
+        if(ejemplares >= prestados){
             prestados++;
-            return ejemplares - prestados;
+            ejemplares--;
+            return ejemplares;
         }else{
             return -1;
         }
     }
 
+
     public int devolver(){
         if (prestados > 0){
             prestados--;
+            ejemplares++;
             return ejemplares - prestados;
         }else{
             return -1;

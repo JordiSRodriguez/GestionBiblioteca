@@ -111,40 +111,38 @@ public class Biblioteca {
                     setLibro(libro);
                 }
                 case 4 -> getLibros();
-                case 5 -> {
-                    int isbn;
-                    do {
-                        System.out.println("Introduce el ISBN del libro");
-                        isbn = sc2.nextInt();
-                        for (Libro libro : libros) {
-                            if (libro.getIsbn().equals(isbn)) {
-                                if (libro.getEjemplares() > 0) {
-                                    libro.prestar();
-                                    System.out.println("Numero de ejemplares disponibles: " + libro.getEjemplares());
-                                } else {
-                                    System.out.println("No hay ejemplares disponibles");
-                                }
+                case 5 ->{
+                    System.out.println("Introduce el ISBN del libro");
+                    String isbn = sc.nextLine();
+                    for (Libro libro : libros) {
+                        if (libro.getIsbn().equals(isbn)) {
+                            if (libro.getEjemplares() > 0) {
+                                libro.prestar();
+                                System.out.println("El libro " + libro.getTitulo() + " ha sido prestado");
+                                System.out.println("Quedan " + libro.getEjemplares() + " ejemplares disponibles");
+                            } else {
+                                System.out.println("No quedan ejemplares disponibles");
                             }
                         }
-                    } while (!libros.contains(isbn));
+                    }
                 }
+
                 case 6 -> {
-                    int isbn;
-                    do {
-                        System.out.println("Introduce el ISBN del libro");
-                        isbn = sc2.nextInt();
-                        for (Libro libro : libros) {
-                            if (libro.getIsbn().equals(isbn)) {
-                                if (libro.getPrestados() == 0) {
-                                    System.out.println("No hay ejemplares prestados");
-                                } else {
-                                    libro.devolver();
-                                    System.out.println("Numero de ejemplares disponibles: " + libro.getEjemplares());
-                                }
+                    System.out.println("Introduce el ISBN del libro");
+                    String isbn = sc.nextLine();
+                    for (Libro libro : libros) {
+                        if (libro.getIsbn().equals(isbn)) {
+                            if (libro.getPrestados() > 0) {
+                                libro.devolver();
+                                System.out.println("El libro " + libro.getTitulo() + " ha sido devuelto");
+                                System.out.println("Quedan " + libro.getEjemplares() + " ejemplares disponibles");
+                            } else {
+                                System.out.println("No quedan ejemplares prestados");
                             }
                         }
-                    } while (!libros.contains(isbn));
+                    }
                 }
+
                 case 7 -> {
                     System.out.println("Introduce el ISSN de la revista");
                     String issn = sc.nextLine();
