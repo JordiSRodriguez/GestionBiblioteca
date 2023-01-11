@@ -75,7 +75,7 @@ public class Libro {
         String aux = "";
         aux+= "Libro:" +
                 "\nISBN=" + isbn + "" +
-                "\nTitulo=\n" + titulo;
+                "\nTitulo=" + titulo + "\n";
         for (int i = 0; i < autoria.length; i++) {
             aux += autoria[i];
         }
