@@ -7,6 +7,8 @@ public class Biblioteca {
     private static ArrayList<Autoria> autorias;
     private static ArrayList<Libro> libros;
     private static ArrayList<Revista> revistas;
+    public static Scanner sc = new Scanner(System.in);
+    public static Scanner sc2 = new Scanner(System.in);
 
     public Biblioteca() {
         autorias = new ArrayList<>();
@@ -67,8 +69,7 @@ public class Biblioteca {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
+
         Biblioteca biblioteca = new Biblioteca();
         int opcion = 0;
 
@@ -76,118 +77,130 @@ public class Biblioteca {
             menu();
             opcion = sc2.nextInt();
             switch (opcion) {
-                case 1 -> {
-                    System.out.println("Introduce el ID del autor/a");
-                    int id = sc2.nextInt();
-                    System.out.println("Introduce el nombre del autor/a");
-                    String nombre = sc.nextLine();
-                    System.out.println("Introduce los apellidos del autor/a");
-                    String apellidos = sc.nextLine();
-                    Autoria autoria = new Autoria(id, nombre, apellidos);
-                    setAutoria(autoria);
-                }
+                case 1 -> crearAutor();
                 case 2 -> getAutorias();
-                case 3 -> {
-                    System.out.println("Introduce el ISBN del libro");
-                    String isbn = sc.nextLine();
-                    System.out.println("Introduce el título del libro");
-                    String titulo = sc.nextLine();
-                    System.out.println("Introduce el numero de ejemplares del libro");
-                    int numEjemplares = sc2.nextInt();
-                    System.out.println("Introduce el numero de autoras/es del libro");
-                    int numAutorias = sc2.nextInt();
-                    Libro libro = new Libro(isbn, titulo, numEjemplares, numAutorias);
-                    for (int i = 1; i <= numAutorias; i++) {
-                        System.out.println("Introduce el ID del autor/a " + i);
-                        int id = sc2.nextInt();
-                        for (Autoria autoria : autorias) {
-                            if (autoria.getId() == id) {
-                                libro.anadirAutor(autoria);
-                            }
-                        }
-                    }
-
-                    libro.setEjemplares(numEjemplares);
-                    setLibro(libro);
-                }
+                case 3 -> crearLibro();
                 case 4 -> getLibros();
-                case 5 ->{
-                    System.out.println("Introduce el ISBN del libro");
-                    String isbn = sc.nextLine();
-                    for (Libro libro : libros) {
-                        if (libro.getIsbn().equals(isbn)) {
-                            if (libro.getEjemplares() > 0) {
-                                libro.prestar();
-                                System.out.println("El libro " + libro.getTitulo() + " ha sido prestado");
-                                System.out.println("Quedan " + libro.getEjemplares() + " ejemplares disponibles");
-                            } else {
-                                System.out.println("No quedan ejemplares disponibles");
-                            }
-                        }
-                    }
-                }
-
-                case 6 -> {
-                    System.out.println("Introduce el ISBN del libro");
-                    String isbn = sc.nextLine();
-                    for (Libro libro : libros) {
-                        if (libro.getIsbn().equals(isbn)) {
-                            if (libro.getPrestados() > 0) {
-                                libro.devolver();
-                                System.out.println("El libro " + libro.getTitulo() + " ha sido devuelto");
-                                System.out.println("Quedan " + libro.getEjemplares() + " ejemplares disponibles");
-                            } else {
-                                System.out.println("No quedan ejemplares prestados");
-                            }
-                        }
-                    }
-                }
-
-                case 7 -> {
-                    System.out.println("Introduce el ISSN de la revista");
-                    String issn = sc.nextLine();
-                    System.out.println("Introduce el título de la revista");
-                    String titulo = sc.nextLine();
-                    System.out.println("Introduce el numero de autoras/es de la revista");
-                    int numAutorias = sc2.nextInt();
-                    Revista revista = new Revista(issn, titulo, numAutorias);
-                    for (int i = 1; i <= numAutorias; i++) {
-                        System.out.println("Introduce el ID del autor/a " + i);
-                        int id = sc2.nextInt();
-                        for (Autoria autoria : autorias) {
-                            if (autoria.getId() == id) {
-                                revista.anadirAutor(autoria);
-                            }
-                        }
-                    }
-                    setRevista(revista);
-                }
+                case 5 -> prestarLibro();
+                case 6 -> devolverLibro();
+                case 7 -> crearRevista();
                 case 8 -> getRevistas();
-                case 9 -> {
-                    System.out.println("Introduce el ISSN de la revista");
-                    String issn = sc.nextLine();
-                    for (Revista revista : revistas) {
-                        if (revista.getIssn().equals(issn)) {
-                                revista.prestar();
-                                System.out.println("La revista " + revista.getTitulo() + " ha sido prestada");
-                        }
-                    }
-                }
-                case 10 -> {
-                    System.out.println("Introduce el ISSN de la revista");
-                    String issn = sc.nextLine();
-                    for (Revista revista : revistas) {
-                        if (revista.getIssn().equals(issn)) {
-                            if (revista.getPrestados() > 0) {
-                                revista.devolver();
-                                System.out.println("La revista " + revista.getTitulo() + " ha sido devuelta");
-                            } else {
-                                System.out.println("No quedan revistas prestadas");
-                            }
-                        }
-                    }
-                }
+                case 9 -> prestarRevista();
+                case 10 -> devolverRevista();
             }
         } while (opcion != 0);
+    }
+
+    public static void crearAutor(){
+        System.out.println("Introduce el ID del autor/a");
+        int id = sc2.nextInt();
+        System.out.println("Introduce el nombre del autor/a");
+        String nombre = sc.nextLine();
+        System.out.println("Introduce los apellidos del autor/a");
+        String apellidos = sc.nextLine();
+        Autoria autoria = new Autoria(id, nombre, apellidos);
+        setAutoria(autoria);
+    }
+
+    public static void crearLibro(){
+        System.out.println("Introduce el ISBN del libro");
+        String isbn = sc.nextLine();
+        System.out.println("Introduce el título del libro");
+        String titulo = sc.nextLine();
+        System.out.println("Introduce el numero de ejemplares del libro");
+        int numEjemplares = sc2.nextInt();
+        System.out.println("Introduce el numero de autoras/es del libro");
+        int numAutorias = sc2.nextInt();
+        Libro libro = new Libro(isbn, titulo, numEjemplares, numAutorias);
+        for (int i = 1; i <= numAutorias; i++) {
+            System.out.println("Introduce el ID del autor/a " + i);
+            int id = sc2.nextInt();
+            for (Autoria autoria : autorias) {
+                if (autoria.getId() == id) {
+                    libro.anadirAutor(autoria);
+                }
+            }
+        }
+
+        libro.setEjemplares(numEjemplares);
+        setLibro(libro);
+    }
+
+    public static void prestarLibro(){
+        System.out.println("Introduce el ISBN del libro");
+        String isbn = sc.nextLine();
+        for (Libro libro : libros) {
+            if (libro.getIsbn().equals(isbn)) {
+                if (libro.getEjemplares() > 0) {
+                    libro.prestar();
+                    System.out.println("El libro " + libro.getTitulo() + " ha sido prestado");
+                    System.out.println("Quedan " + libro.getEjemplares() + " ejemplares disponibles");
+                } else {
+                    System.out.println("No quedan ejemplares disponibles");
+                }
+            }
+        }
+    }
+
+    public static void devolverLibro(){
+        System.out.println("Introduce el ISBN del libro");
+        String isbn = sc.nextLine();
+        for (Libro libro : libros) {
+            if (libro.getIsbn().equals(isbn)) {
+                if (libro.getPrestados() > 0) {
+                    libro.devolver();
+                    System.out.println("El libro " + libro.getTitulo() + " ha sido devuelto");
+                    System.out.println("Quedan " + libro.getEjemplares() + " ejemplares disponibles");
+                } else {
+                    System.out.println("No quedan ejemplares prestados");
+                }
+            }
+        }
+    }
+
+    public static void crearRevista(){
+        System.out.println("Introduce el ISSN de la revista");
+        String issn = sc.nextLine();
+        System.out.println("Introduce el título de la revista");
+        String titulo = sc.nextLine();
+        System.out.println("Introduce el numero de autoras/es de la revista");
+        int numAutorias = sc2.nextInt();
+        Revista revista = new Revista(issn, titulo, numAutorias);
+        for (int i = 1; i <= numAutorias; i++) {
+            System.out.println("Introduce el ID del autor/a " + i);
+            int id = sc2.nextInt();
+            for (Autoria autoria : autorias) {
+                if (autoria.getId() == id) {
+                    revista.anadirAutor(autoria);
+                }
+            }
+        }
+        setRevista(revista);
+    }
+
+    public static void prestarRevista(){
+        System.out.println("Introduce el ISSN de la revista");
+        String issn = sc.nextLine();
+        for (Revista revista : revistas) {
+            if (revista.getIssn().equals(issn)) {
+                revista.prestar();
+                System.out.println("La revista " + revista.getTitulo() + " ha sido prestada");
+            }
+        }
+    }
+
+    public static void devolverRevista(){
+        System.out.println("Introduce el ISSN de la revista");
+        String issn = sc.nextLine();
+        for (Revista revista : revistas) {
+            if (revista.getIssn().equals(issn)) {
+                if (revista.getPrestados() > 0) {
+                    revista.devolver();
+                    System.out.println("La revista " + revista.getTitulo() + " ha sido devuelta");
+                } else {
+                    System.out.println("No quedan revistas prestadas");
+                }
+            }
+        }
     }
 }
