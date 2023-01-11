@@ -16,6 +16,9 @@ public class Biblioteca {
         revistas = new ArrayList<>();
     }
 
+    /**
+     * Recibe el return del toString de la clase Libro y lo imprime por pantalla
+     */
     public static void getAutorias() {
         for (Autoria autoria : autorias) {
             System.out.println(autoria);
@@ -36,6 +39,9 @@ public class Biblioteca {
         libros.add(libro);
     }
 
+    /**
+     * Recibe el return del toString de la clase Revista y lo imprime por pantalla
+     */
     public static void getRevistas() {
         for (Revista revista : revistas) {
             System.out.println(revista);
@@ -53,6 +59,9 @@ public class Biblioteca {
                 "\nRevistas=" + revistas;
     }
 
+    /**
+     * Al ser llamada esta funcion imprime las opciones del menu
+     */
     public static void menu() {
         String menu = "1. Crear Autor/a\n" +
                 "2. Ver autoras/es\n" +
@@ -91,6 +100,9 @@ public class Biblioteca {
         } while (opcion != 0);
     }
 
+    /**
+     * Crea un autor y lo añade a la lista de autorias, para ello pide al usuario el nombre y los dos apellidos
+     */
     public static void crearAutor(){
         System.out.println("Introduce el ID del autor/a");
         int id = sc2.nextInt();
@@ -102,6 +114,10 @@ public class Biblioteca {
         setAutoria(autoria);
     }
 
+    /**
+     * Crea un libro y lo añade a la lista de libros, para ello pide al usuario el titulo, el isbn y el numero de autores
+     * Despues pide al usuario el id del autor y lo busca en la lista de autorias, si lo encuentra lo añade a la lista de autores del libro
+     */
     public static void crearLibro(){
         System.out.println("Introduce el ISBN del libro");
         String isbn = sc.nextLine();
@@ -126,6 +142,10 @@ public class Biblioteca {
         setLibro(libro);
     }
 
+    /**
+     * Le pide al usuario el isbn del libro que quiere prestar y lo busca en la lista de libros, si lo encuentra le pide al usuario el numero de ejemplar
+     * que quiere prestar y lo busca en la lista de ejemplares del libro, si lo encuentra y esta disponible lo presta
+     */
     public static void prestarLibro(){
         System.out.println("Introduce el ISBN del libro");
         String isbn = sc.nextLine();
@@ -141,7 +161,10 @@ public class Biblioteca {
             }
         }
     }
-
+    /**
+     * Le pide al usuario el isbn del libro que quiere devolver y lo busca en la lista de libros, si lo encuentra le pide al usuario el numero de ejemplar
+     * que quiere devolver y lo busca en la lista de ejemplares del libro, si lo encuentra y esta prestado lo devuelve
+     */
     public static void devolverLibro(){
         System.out.println("Introduce el ISBN del libro");
         String isbn = sc.nextLine();
@@ -158,6 +181,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Crea una revista y la añade a la lista de revistas, para ello pide al usuario el titulo, el isbn y el numero de autores
+     * Despues pide al usuario el id del autor y lo busca en la lista de autorias, si lo encuentra lo añade a la lista de autores de la revista
+     */
     public static void crearRevista(){
         System.out.println("Introduce el ISSN de la revista");
         String issn = sc.nextLine();
@@ -177,7 +204,10 @@ public class Biblioteca {
         }
         setRevista(revista);
     }
-
+    /**
+     * Le pide al usuario el issn de la revista que quiere prestar y lo busca en la lista de revistas, si lo encuentra le pide al usuario el numero de ejemplar
+     * que quiere prestar y lo busca en la lista de ejemplares de la revista, si lo encuentra y esta disponible lo presta
+     */
     public static void prestarRevista(){
         System.out.println("Introduce el ISSN de la revista");
         String issn = sc.nextLine();
@@ -188,7 +218,10 @@ public class Biblioteca {
             }
         }
     }
-
+    /**
+     * Le pide al usuario el issn de la revista que quiere devolver y lo busca en la lista de revistas, si lo encuentra le pide al usuario el numero de ejemplar
+     * que quiere devolver y lo busca en la lista de ejemplares de la revista, si lo encuentra y esta prestado lo devuelve
+     */
     public static void devolverRevista(){
         System.out.println("Introduce el ISSN de la revista");
         String issn = sc.nextLine();

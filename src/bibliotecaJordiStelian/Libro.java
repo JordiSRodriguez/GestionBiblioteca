@@ -60,7 +60,10 @@ public class Libro {
         this.prestados = prestados;
     }
 
-
+    /**
+     * Añade un autor a la lista de autores del libro
+     * @param autoria
+     */
     public void anadirAutor(Autoria autoria){
        for (int i = 0; i < this.autoria.length; i++) {
            if(this.autoria[i] == null){
@@ -70,7 +73,10 @@ public class Libro {
        }
     }
 
-
+    /**
+     * Devuelve todos los datos del libro
+     * @return
+     */
     public String toString(){
         String aux = "";
         aux+= "Libro:" +
@@ -84,6 +90,10 @@ public class Libro {
         return aux;
     }
 
+    /**
+     * Comprueba si el libro está prestado
+     * @return
+     */
     public int prestar(){
         if(ejemplares >= prestados){
             prestados++;
@@ -94,7 +104,10 @@ public class Libro {
         }
     }
 
-
+    /**
+     * Devuelve el libro prestado
+     * @return
+     */
     public int devolver(){
         if (prestados > 0){
             prestados--;

@@ -46,6 +46,10 @@ public class Revista {
         this.prestados = prestados;
     }
 
+    /**
+     *Añade un autor a la lista de autores de la revista
+     * @param autoria
+     */
     public void anadirAutor(Autoria autoria){
         for (int i = 0; i < this.autoria.length; i++) {
             if(this.autoria[i] == null){
@@ -56,6 +60,10 @@ public class Revista {
 
     }
 
+    /**
+     * Devuelve todos los datos de la revista
+     * @return
+     */
     public String toString(){
         String aux = "";
         aux += "Revista:" +
@@ -67,11 +75,21 @@ public class Revista {
         aux += "\nPrestados=" + prestados;
         return aux;
     }
+    /**
+     * Devuelve el número que sirve de contador para saber si el la revista se ha prestado o no
+     * cada vez que se presta el numero de prestados aumenta en 1
+     * @return
+     */
     public int prestar(){
         prestados++;
         return prestados;
     }
 
+    /**
+     * Devuelve el número que sirve de contador para saber si el la revista se ha devuelto o no
+     * cada vez que se devuelve el numero de prestados disminuye en 1
+     * @return
+     */
     public int devolver(){
         if (prestados > 0){
             prestados--;
