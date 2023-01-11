@@ -71,6 +71,7 @@ public class Biblioteca {
         Scanner sc2 = new Scanner(System.in);
         Biblioteca biblioteca = new Biblioteca();
         int opcion = 0;
+
         do {
             menu();
             opcion = sc2.nextInt();
@@ -95,7 +96,7 @@ public class Biblioteca {
                     int numEjemplares = sc2.nextInt();
                     System.out.println("Introduce el numero de autoras/es del libro");
                     int numAutorias = sc2.nextInt();
-                    Libro libro = new Libro(isbn, titulo, numEjemplares);
+                    Libro libro = new Libro(isbn, titulo, numEjemplares, numAutorias);
                     for (int i = 1; i <= numAutorias; i++) {
                         System.out.println("Introduce el ID del autor/a " + i);
                         int id = sc2.nextInt();
@@ -153,7 +154,7 @@ public class Biblioteca {
                     int numPrestamos = sc2.nextInt();
                     System.out.println("Introduce el numero de autoras/es de la revista");
                     int numAutorias = sc2.nextInt();
-                    Revista revista = new Revista(issn, titulo, numPrestamos);
+                    Revista revista = new Revista(issn, titulo, numPrestamos, numAutorias);
                     for (int i = 1; i <= numAutorias; i++) {
                         System.out.println("Introduce el ID del autor/a " + i);
                         int id = sc2.nextInt();
@@ -183,6 +184,5 @@ public class Biblioteca {
                 }
             }
         } while (opcion != 0);
-
     }
 }

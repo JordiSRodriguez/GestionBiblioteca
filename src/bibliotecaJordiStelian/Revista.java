@@ -1,15 +1,18 @@
 package bibliotecaJordiStelian;
 
+import java.util.Arrays;
+
 public class Revista {
     private String issn;
     private String titulo;
     private String[] autoria;
     private int prestados;
 
-    public Revista(String issn, String titulo, int prestados) {
+    public Revista(String issn, String titulo, int prestados, int autores) {
         this.issn = issn;
         this.titulo = titulo;
         this.prestados = prestados;
+        this.autoria = new String[autores];
     }
     public String getIssn() {
         return issn;
@@ -55,11 +58,16 @@ public class Revista {
     }
 
     public String toString(){
-        return "Revista:" +
+        String aux = "";
+        aux += "Revista:" +
                 "\nISSN=" + issn +
                 "\nTitulo=" + titulo +
-                "\nAutoria=" + autoria +
-                "\nPrestados=" + prestados;
+                "\nAutoria=\n";
+        for (int i = 0; i < autoria.length; i++) {
+                aux += autoria[i];
+        }
+        aux += "\nPrestados=" + prestados;
+        return aux;
     }
     public int prestar(){
         prestados++;

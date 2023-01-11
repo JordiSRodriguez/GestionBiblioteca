@@ -1,5 +1,7 @@
 package bibliotecaJordiStelian;
 
+import java.util.Arrays;
+
 public class Libro {
     private String isbn;
     private String titulo;
@@ -10,11 +12,12 @@ public class Libro {
     public Libro(){
 
     }
-    public Libro(String isbn, String titulo, int ejemplares) {
+    public Libro(String isbn, String titulo, int ejemplares, int autores) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.ejemplares = ejemplares;
-        this.autoria = autoria;
+        this.autoria = new String[autores];
+
     }
 
     public String getIsbn() {
@@ -65,17 +68,21 @@ public class Libro {
                break;
            }
        }
-
     }
 
 
     public String toString(){
-        return "Libro:" +
+        String aux = "";
+        aux+= "Libro:" +
                 "\nISBN=" + isbn + "" +
                 "\nTitulo=" + titulo +
-                "\nAutoria=" + autoria +
-                "\nEjemplares=" + ejemplares +
+                "\nAutoria=\n";
+        for (int i = 0; i < autoria.length; i++) {
+            aux += autoria[i];
+        }
+        aux += "\nEjemplares=" + ejemplares +
                 "\nPrestados=" + prestados;
+        return aux;
     }
     public int prestar(){
         if (ejemplares > prestados){
