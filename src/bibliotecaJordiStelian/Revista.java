@@ -60,8 +60,7 @@ public class Revista {
         String aux = "";
         aux += "Revista:" +
                 "\nISSN=" + issn +
-                "\nTitulo=" + titulo +
-                "\nAutoria=\n";
+                "\nTitulo=\n" + titulo;
         for (int i = 0; i < autoria.length; i++) {
                 aux += autoria[i];
         }
