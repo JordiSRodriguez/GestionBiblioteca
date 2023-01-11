@@ -49,7 +49,7 @@ public class Libro {
     }
 
     public void setEjemplares(int ejemplares) {
-        this.ejemplares += ejemplares;
+        this.ejemplares = ejemplares;
     }
 
     public int getPrestados() {
